@@ -51,6 +51,50 @@ Recommendations
 Growth Experiment
 ```
 
+## Product Preview
+
+### 1. Data Input
+
+The application accepts growth and campaign datasets and prepares the data for analysis.
+
+![Data Input](docs/screenshots/01-input.png)
+
+### 2. Growth Analysis
+
+The application calculates and presents the core growth metrics and overall performance.
+
+![Growth Analysis](docs/screenshots/02-growth-analysis.png)
+
+### 3. Growth Diagnosis
+
+The AI interprets the analytical results and identifies the most material growth signals and constraints.
+
+![Growth Diagnosis](docs/screenshots/03-growth-diagnosis.png)
+
+### 4. Campaign Analysis
+
+Campaign-level analysis helps identify meaningful performance patterns and campaigns that materially explain channel results.
+
+![Campaign Analysis](docs/screenshots/04-campaign-analysis.png)
+
+### 5. Channel Analysis
+
+Channel performance is evaluated across spend, revenue, efficiency, activation, conversion, and retention.
+
+![Channel Analysis](docs/screenshots/05-channel-analysis.png)
+
+### 6. Cohort Analysis
+
+Cohort analysis evaluates changes in user quality and performance over time.
+
+![Cohort Analysis](docs/screenshots/06-cohort-analysis.png)
+
+### 7. AI Recommendations
+
+The system turns detected patterns into specific growth actions and a testable experiment.
+
+![AI Recommendations](docs/screenshots/07-ai-recommendations.png)
+
 ## Analytical Framework
 
 The analysis follows:
@@ -271,6 +315,16 @@ the-auto-analyst/
 │   ├── config.json
 │   ├── entities/
 │   └── functions/
+│
+├── docs/
+│   └── screenshots/
+│       ├── 01-input.png
+│       ├── 02-growth-analysis.png
+│       ├── 03-growth-diagnosis.png
+│       ├── 04-campaign-analysis.png
+│       ├── 05-channel-analysis.png
+│       ├── 06-cohort-analysis.png
+│       └── 07-ai-recommendations.png
 │
 ├── src/
 │   ├── api/
