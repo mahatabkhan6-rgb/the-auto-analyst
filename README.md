@@ -1,62 +1,343 @@
-# Base44 Project
+# The Auto-Analyst
 
-Use this repository to run and edit the app locally, then publish changes back through Base44.
+> **Design an AI that interprets data, surfaces patterns, and writes its own insights.**
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+The Auto-Analyst is an AI-powered growth analytics application designed to turn raw growth and campaign data into structured analysis, meaningful patterns, growth diagnoses, recommendations, and testable experiments.
 
-## Prerequisites
+The system combines deterministic analytics with LLM-based reasoning so that calculations remain data-driven while the AI focuses on interpreting what the numbers mean.
 
-1. Clone the repository using the project's Git URL.
-2. Navigate to the project directory.
-3. Install dependencies: `npm install`.
-4. Install the Base44 CLI: `npm install -g base44@latest`.
-5. Install [Deno](https://docs.deno.com/runtime/getting_started/installation/) — the local Base44 backend runs on it.
+## Overview
 
-Run `base44 --help` (or see the [CLI reference](https://docs.base44.com/developers/references/cli/commands/introduction)) for the full command surface.
+Growth teams often have access to large amounts of campaign, channel, cohort, and funnel data, but identifying the most important patterns still requires significant manual analysis.
+
+The Auto-Analyst is designed to automate this analytical workflow.
+
+Instead of simply reporting the highest or lowest metrics, the system looks for relationships across multiple dimensions and identifies patterns that are potentially meaningful from a growth perspective.
+
+## What It Does
+
+The application analyzes:
+
+- Acquisition
+- Activation
+- Conversion
+- Retention
+- Monetization
+- Channel performance
+- Campaign performance
+- Cohort performance
+
+It goes beyond simply ranking metrics and attempts to identify relationships and patterns that are meaningful from a growth perspective.
+
+## How It Works
+
+```text
+Dataset
+    ↓
+Data Validation & Normalisation
+    ↓
+Metric Calculations
+    ↓
+Pattern Detection
+    ↓
+Structured Analysis
+    ↓
+AI Reasoning
+    ↓
+Growth Diagnosis
+    ↓
+Recommendations
+    ↓
+Growth Experiment
+```
+
+## Analytical Framework
+
+The analysis follows:
+
+```text
+Acquisition → Activation → Conversion → Retention → Monetization
+```
+
+### Acquisition
+
+Evaluates traffic, impressions, clicks, spend, CTR and CPC.
+
+### Activation
+
+Evaluates signup and activation behaviour.
+
+### Conversion
+
+Evaluates conversion performance and CAC.
+
+### Retention
+
+Evaluates cohort retention and D30 performance.
+
+### Monetization
+
+Evaluates revenue, AOV, ARPU and ROAS.
+
+## Metrics
+
+| Metric | Calculation |
+|---|---|
+| CTR | Clicks / Impressions |
+| CPC | Spend / Clicks |
+| Visitor-to-Signup Rate | Signups / Visitors |
+| Activation Rate | Activated Users / Signups |
+| Conversion Rate | Converted Users / Signups |
+| CAC | Spend / Converted Users |
+| CPA | Spend / Signups |
+| AOV | Revenue / Orders |
+| ARPU | Revenue / Users |
+| Revenue per Signup | Revenue / Signups |
+| D30 Retention | D30 Retained Users / Signups |
+| ROAS | Revenue / Spend |
+
+Aggregated metrics use summed numerators and denominators rather than averaging row-level percentages.
+
+## Pattern Detection
+
+The system does not generate an insight simply because a metric is the highest, lowest, or has changed.
+
+It looks for:
+
+- Inflection points
+- Persistent changes
+- Outliers
+- Relationships between metrics
+- Funnel contradictions
+- Cross-channel patterns
+- Campaign-level patterns
+- Cohort-level patterns
+- Scale versus quality differences
+
+The objective is to surface the strongest patterns rather than produce a long list of metric observations.
+
+## AI Reasoning
+
+The AI receives structured analytical results and is instructed to:
+
+1. Identify the three most material growth signals
+2. Support observations with actual numbers
+3. Explain commercial significance
+4. Separate observed facts from inferred drivers
+5. Identify the most important funnel constraint
+6. Compare channels, campaigns and cohorts
+7. Recommend specific growth actions
+8. Propose one testable growth experiment
+9. Define primary and secondary KPIs
+10. State confidence and limitations
+
+The reasoning layer is designed not to invent metrics, benchmarks, or causal explanations unsupported by the dataset.
+
+## Channel Analysis
+
+Channel performance is evaluated across multiple dimensions including:
+
+- Spend
+- Revenue
+- ROAS
+- CAC
+- Activation
+- Conversion
+- Retention
+
+This allows the system to distinguish between patterns such as:
+
+```text
+Efficient + High Quality
+Efficient + Weak Downstream Quality
+Inefficient + High Quality
+Inefficient + Weak Downstream Quality
+```
+
+## Campaign Analysis
+
+Campaign analysis helps explain what is driving channel-level performance.
+
+Rather than reporting every campaign ranking, the system surfaces campaigns that reveal a meaningful pattern or materially explain a channel result.
+
+## Cohort Analysis
+
+Cohort analysis evaluates how user quality changes over time.
+
+The system can compare:
+
+- Activation
+- Conversion
+- Revenue
+- Retention
+- Cohort performance
+
+Repeated or similar cohort movements are consolidated so that the AI focuses on the underlying pattern.
+
+## Recommendations & Experiments
+
+Recommendations are derived from detected patterns rather than simple metric rankings.
+
+Each recommendation is intended to answer:
+
+> What should be tested or changed next, and why?
+
+The system can generate a structured growth experiment containing:
+
+- Hypothesis
+- Recommended action
+- Primary KPI
+- Secondary KPI
+- Measurement considerations
+
+When the data does not establish causality, the explanation is treated as a hypothesis rather than a fact.
+
+## Data Validation
+
+The application validates and normalises incoming datasets before analysis.
+
+It supports common variations such as:
+
+```text
+users
+unique_users
+signups
+registrations
+activated
+activated_users
+converted
+converted_users
+orders
+revenue
+revenue_usd
+d30_retained_users
+```
+
+The system also flags potential data-quality issues that could affect interpretation.
+
+## Technology
+
+### Frontend
+
+- React
+- JavaScript
+- Vite
+- Tailwind CSS
+
+### Application Platform
+
+- Base44
+
+### AI
+
+- Claude Sonnet 5
+- Server-side LLM integration
+
+### Analytics
+
+- Deterministic metric engine
+- Pattern detection
+- Channel analysis
+- Campaign analysis
+- Cohort analysis
+- AI-generated growth diagnosis
+
+## Testing
+
+The application has been tested using synthetic datasets with intentionally different performance patterns.
+
+Testing covered:
+
+- Metric calculation accuracy
+- Aggregated calculations
+- Field-name variations
+- Channel analysis
+- Campaign analysis
+- Cohort analysis
+- Pattern detection
+- AI interpretation
+- Recommendations
+- Experiment generation
+- Data-quality handling
+
+Different datasets were used to verify that the resulting analysis changes according to the underlying data rather than following a fixed narrative.
+
+## Project Structure
+
+```text
+the-auto-analyst/
+│
+├── base44/
+│   ├── config.json
+│   ├── entities/
+│   └── functions/
+│
+├── src/
+│   ├── api/
+│   ├── components/
+│   ├── pages/
+│   └── ...
+│
+├── AI_Growth_Analyst_Master_Prompt.txt
+├── AGENTS.md
+├── CLAUDE.md
+├── package.json
+├── package-lock.json
+├── vite.config.js
+├── tailwind.config.js
+└── README.md
+```
 
 ## Run Locally
 
-Three commands, from the project root:
+Clone the repository:
 
 ```bash
-base44 login   # one-time per machine
-base44 link    # one-time per clone
-base44 dev     # local backend + frontend together
+git clone <your-repository-url>
 ```
 
-Open the frontend URL that `base44 dev` prints (typically `http://localhost:5173`).
-
-Notes:
-
-- **Every fresh clone needs `base44 link`.** It writes `base44/.app.jsonc` (the app-id pointer), which is deliberately gitignored. Your app id is in the Builder URL (`app.base44.com/apps/<id>/...`); `base44 link --help` shows the non-interactive flags.
-- **`base44 dev` runs the frontend for you** (via `site.serveCommand` in this repo's `base44/config.jsonc`) — never run `npm run dev` yourself: alone it serves a UI with no backend behind it (`[base44] Proxy not enabled`, every `/api` call fails), and alongside `base44 dev` the second Vite silently takes the next port and you end up looking at the wrong one.
-- **The app must be published at least once for the UI to load under `base44 dev`.** The frontend boots by fetching app settings from the hosted app; before the first publish that fails and every page redirects to login. The local API works regardless.
-- Entities, functions, and auth run locally — entity data is **in-memory only**, wiped when `base44 dev` restarts. Everything else (Core integrations, OAuth login) is forwarded to your deployed app. Full breakdown: [Local development overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview).
-
-## Frontend Only, Hosted Backend
-
-To work on just the frontend against your app's live hosted backend:
+Navigate to the project:
 
 ```bash
-base44 dev --remote
+cd the-auto-analyst
 ```
 
-⚠️ In this mode writes go to your app's **production data** — plain `base44 dev` keeps everything local.
-
-## Publish Your Changes
-
-After pushing your changes to git, open the Base44 dashboard and publish the app:
+Install dependencies:
 
 ```bash
-base44 dashboard open
+npm install
 ```
 
-This repo syncs to Base44 through git, so publish from the dashboard rather than `base44 deploy` — a CLI deploy ships your local tree directly, bypassing the sync, and the deployed state silently diverges from the repo.
+Start the development server:
 
-## Docs & Support
+```bash
+npm run dev
+```
 
-GitHub integration: [https://docs.base44.com/developers/app-code/local-development/github](https://docs.base44.com/developers/app-code/local-development/github)
+The application will then be available at the local development URL shown by Vite.
 
-Local development: [https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview)
+## Live Application
 
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+**The Auto-Analyst**
+
+https://growth-logic-labs-app.base44.app
+
+## Data & Privacy
+
+The project uses synthetic datasets for testing and demonstration.
+
+No confidential customer or production datasets are required for the examples included with the project.
+
+API keys, secrets, and environment variables should never be committed to the repository.
+
+## Project Objective
+
+The goal of The Auto-Analyst is to explore how AI can move beyond reporting metrics and help interpret growth data.
+
+> **Data tells you what happened. The Auto-Analyst is designed to help identify what matters, explain why it may matter, and determine what to test next.**
+
+## Author
+
+**Mahatab Khan**
+
+Growth & Marketing professional focused on CRM, lifecycle marketing, growth analytics, experimentation, and AI-assisted marketing workflows.
